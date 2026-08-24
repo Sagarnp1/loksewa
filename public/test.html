@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>परीक्षा — SagLok</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap nav">
+    <a href="index.html" class="logo"><span class="mark">सा</span><span>SagLok<small>शाखा अधिकृत तयारी</small></span></a>
+    <div class="spacer"></div>
+    <nav class="desktop-links" style="display:flex;gap:6px;align-items:center">
+      <a class="navlink" href="sets.html">← सेटहरूमा फर्कनुहोस्</a>
+      <span class="badge-access">निःशुल्क प्रयोगकर्ता</span>
+    </nav>
+  </div>
+</header>
+
+<section class="block" style="padding-top:22px">
+  <div class="wrap">
+    <div id="setTitle" style="margin-bottom:16px"></div>
+
+    <!-- TEST VIEW -->
+    <div id="testView" class="test-shell">
+      <div class="test-main">
+        <div class="test-q" id="testQ"></div>
+        <div class="test-nav">
+          <button class="btn btn-ghost btn-sm" id="prevBtn">← अघिल्लो</button>
+          <button class="btn btn-ghost btn-sm" id="flagBtn">⚑ चिन्ह लगाउनुहोस्</button>
+          <button class="btn btn-ghost btn-sm" id="clearBtn">✕ उत्तर हटाउनुहोस्</button>
+          <div class="spacer"></div>
+          <button class="btn btn-primary btn-sm" id="nextBtn">अर्को →</button>
+        </div>
+      </div>
+      <aside class="test-side">
+        <div class="timer-card" id="timerCard">
+          <div class="clk" id="clock">45:00</div>
+          <div class="lab">बाँकी समय</div>
+        </div>
+        <div class="palette">
+          <h4>प्रश्न प्यालेट</h4>
+          <div class="palette-grid" id="palette"></div>
+          <div class="pal-legend">
+            <span><i style="background:var(--ok)"></i> उत्तर दिइएको</span>
+            <span><i style="background:var(--gold)"></i> चिन्ह</span>
+            <span><i style="background:var(--surface);border:1.5px solid var(--line)"></i> बाँकी</span>
+          </div>
+          <button class="btn btn-primary" id="submitBtn" style="width:100%;margin-top:14px">परीक्षा बुझाउनुहोस्</button>
+        </div>
+      </aside>
+    </div>
+
+    <!-- RESULT VIEW -->
+    <div id="resultView" class="hidden"></div>
+  </div>
+</section>
+
+<!-- Rough paper -->
+<button class="rough-toggle" id="roughToggle">✏️ रफ पेपर</button>
+<div class="rough-panel" id="roughPanel">
+  <div class="rough-inner">
+    <div class="rough-head">
+      <b>✏️ रफ पेपर (हातले लेख्नुहोस्)</b>
+      <button class="tool" data-tool="pen" title="कलम">✒️</button>
+      <button class="tool" data-tool="eraser" title="रबर">🧽</button>
+      <span class="pen-color active" data-color="#1f3c88" style="background:#1f3c88"></span>
+      <span class="pen-color" data-color="#b8123a" style="background:#b8123a"></span>
+      <span class="pen-color" data-color="#151a2d" style="background:#151a2d"></span>
+      <span class="pen-color" data-color="#1c8a4e" style="background:#1c8a4e"></span>
+      <button class="tool" id="roughClear" title="सफा गर्नुहोस्">🗑️</button>
+      <button class="tool" id="roughClose" title="बन्द">✕</button>
+    </div>
+    <canvas id="roughCanvas"></canvas>
+  </div>
+</div>
+
+<script src="js/core.js"></script>
+<script src="js/roughpaper.js"></script>
+<script src="js/test.js"></script>
+</body>
+</html>

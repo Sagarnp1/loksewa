@@ -1,0 +1,11 @@
+{
+  "name": "saglok-shakha-adhikrit-prep",
+  "version": "1.0.0",
+  "description": "SagLok — Lok Sewa Shakha Adhikrit (Section Officer) Paper 1 preparation platform: past-question analysis, topic-wise practice, model tests with rough paper, eSewa/Khalti payment, and 20% negative marking.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "SagLok",
+  "license": "MIT"
+}
