@@ -58,6 +58,7 @@ header.site{
 }
 .logo small{display:block;font-size:.62rem;color:var(--ink-soft);font-weight:600;letter-spacing:.5px}
 .nav .spacer{flex:1}
+.desktop-links{display:flex;gap:6px;align-items:center}
 .nav a.navlink{
   padding:8px 14px;border-radius:10px;font-weight:600;font-size:.95rem;color:var(--ink-soft);
   transition:.15s;
@@ -353,9 +354,9 @@ section.block{padding:44px 0}
 .rexp{font-size:.85rem;color:var(--ink-soft);background:var(--surface-2);border-radius:9px;padding:10px 13px;margin-top:8px}
 
 /* ---------- Modal ---------- */
-.modal-bg{position:fixed;inset:0;z-index:100;background:rgba(20,26,45,.55);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px)}
+.modal-bg{position:fixed;inset:0;z-index:100;background:rgba(20,26,45,.55);display:none;align-items:flex-start;justify-content:center;padding:20px;backdrop-filter:blur(3px);overflow-y:auto;-webkit-overflow-scrolling:touch}
 .modal-bg.open{display:flex}
-.modal{background:var(--surface);border-radius:20px;max-width:460px;width:100%;box-shadow:var(--shadow-lg);overflow:hidden;animation:pop .2s}
+.modal{background:var(--surface);border-radius:20px;max-width:460px;width:100%;margin:auto;box-shadow:var(--shadow-lg);overflow:hidden;animation:pop .2s}
 @keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
 .modal .mh{padding:22px 24px 8px;text-align:center}
 .modal .mh .big{font-size:2.2rem}
@@ -424,4 +425,16 @@ footer .fbot{border-top:1px solid #262c4d;padding-top:18px;font-size:.82rem;colo
   .score-break{grid-template-columns:1fr 1fr}
   .sec-head h2{font-size:1.6rem}
   footer .fgrid{grid-template-columns:1fr}
+  /* compact payment popup so every option (incl. promo) fits + is scrollable */
+  .modal-bg{padding:12px}
+  .modal .mh{padding:16px 18px 4px}
+  .modal .mh .big{font-size:1.8rem}
+  .modal .mh h3{font-size:1.15rem}
+  .modal .mb{padding:12px 18px 18px}
+  .pay-opt{padding:11px 13px;margin-bottom:9px}
+  .pay-opt .pi{width:40px;height:40px}
+  .plan-toggle{margin-bottom:12px}
 }
+/* promo row always clearly visible + reachable */
+.pay-opt[data-pay="promo"]{border-color:var(--brand);background:var(--brand-soft)}
+.pay-opt[data-pay="promo"] .arw{color:var(--brand)}
