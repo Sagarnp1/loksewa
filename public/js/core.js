@@ -30,11 +30,13 @@ const SagLok = (() => {
     if(raw==='full') return {full:true, sets:[]};
     try{ return {full:false, sets:JSON.parse(raw)}; }catch(e){ return {full:false, sets:[]}; }
   }
-  function hasFullAccess(){ return getAccess().full; }
+  /* ⭐ FREE_FOR_ALL: सबै प्रयोगकर्तालाई पूर्ण निःशुल्क पहुँच।
+     भविष्यमा भुक्तानी फेरि लागू गर्न यसलाई false बनाउनुहोस्। */
+  const FREE_FOR_ALL = true;
+  function hasFullAccess(){ return FREE_FOR_ALL || getAccess().full; }
   function hasSet(setId){
-    const a=getAccess();
-    if(a.full) return true;
-    return a.sets.includes(setId);
+    if(hasFullAccess()) return true;
+    return getAccess().sets.includes(setId);
   }
   function grantFull(){ localStorage.setItem(LS_ACCESS,'full'); updateBadge(); }
   function grantSet(setId){
@@ -56,9 +58,9 @@ const SagLok = (() => {
   /* ---------- header ---------- */
   function updateBadge(){
     document.querySelectorAll('.badge-access').forEach(b=>{
-      const full = hasFullAccess();
       const a = getAccess();
-      if(full){ b.textContent='✓ पूर्ण पहुँच'; b.classList.add('on'); }
+      if(FREE_FOR_ALL){ b.textContent='✓ सबै निःशुल्क'; b.classList.add('on'); }
+      else if(a.full){ b.textContent='✓ पूर्ण पहुँच'; b.classList.add('on'); }
       else if(a.sets.length){ b.textContent=`✓ ${a.sets.length} सेट`; b.classList.add('on'); }
       else { b.textContent='निःशुल्क प्रयोगकर्ता'; b.classList.remove('on'); }
     });

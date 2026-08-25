@@ -17,12 +17,8 @@
     grid.innerHTML = sets.sets.map(s=>{
       const st=setStats(s);
       const unlocked = s.free || SagLok.hasSet(s.id);
-      const ribbon = s.free
-        ? `<div class="ribbon">निःशुल्क</div>`
-        : (SagLok.hasSet(s.id) ? `<div class="ribbon">✓ खुला</div>` : `<div class="ribbon paid">रु ${sets.meta.perSetPrice}</div>`);
-      const priceHTML = s.free
-        ? `<span class="price free">निःशुल्क</span>`
-        : (SagLok.hasSet(s.id) ? `<span class="price free">✓ अनलक</span>` : `<span class="price">रु ${sets.meta.perSetPrice} <span class="lock-mini">🔒</span></span>`);
+      const ribbon = `<div class="ribbon">निःशुल्क</div>`;
+      const priceHTML = `<span class="price free">निःशुल्क</span>`;
       const btn = unlocked
         ? `<button class="btn btn-primary btn-sm" data-start="${s.id}">सुरु गर्नुहोस् →</button>`
         : `<button class="btn btn-ghost btn-sm" data-unlock="${s.id}">🔓 अनलक</button>`;
@@ -51,8 +47,4 @@
     });
   }
   render();
-
-  document.getElementById('resetBtn').onclick=()=>{
-    SagLok.resetAccess(); render(); SagLok.toast('पहुँच रिसेट भयो');
-  };
 })();
